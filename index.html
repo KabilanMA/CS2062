@@ -1,13 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Hospital Facility Management</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <div class="search-box">
+      <div class="selectbox-container">
+        <div class="select-box">
+          <div class="search-bar">
+            <input type="text" placeholder="Start typing.." />
+          </div>
+
+          <div class="options-container">
+            <div class="option dis-option">
+              <input type="radio" id="dis1" />
+              <label for="dis1">Vavuniya</label>
+            </div>
+
+            <div class="option dis-option">
+              <input type="radio" id="dis2" />
+              <label for="dis2">Mannar</label>
+            </div>
+
+            <div class="option dis-option">
+              <input type="radio" id="dis3" />
+              <label for="dis3">Jaffna</label>
+            </div>
+
+            <div class="option dis-option">
+              <input type="radio" id="dis4" />
+              <label for="dis4">Mullaitivu</label>
+            </div>
+          </div>
+
+          <div class="selected dis-selected">Select District Category</div>
+        </div>
+
+        <div class="select-box">
+          <div class="search-bar">
+            <input type="text" placeholder="Start typing.." />
+          </div>
+
+          <div class="options-container">
+            <div class="option fac-option">
+              <input type="radio" class="xray" id="fac1" />
+              <label for="fac1">X-Ray Scan</label>
+            </div>
+
+            <div class="option fac-option">
+              <input type="radio" class="mri" id="fac2" />
+              <label for="fac2">MRI Scan</label>
+            </div>
+
+            <div class="option fac-option">
+              <input type="radio" class="ct" id="fac3" />
+              <label for="fac3">CT Scan</label>
+            </div>
+
+            <div class="option fac-option">
+              <input type="radio" class="lab" id="fac4" />
+              <label for="fac4">Laboratory Services</label>
+            </div>
+
+            <div class="option fac-option">
+              <input type="radio" class="ecg" id="fac5" />
+              <label for="fac5">ECG Services</label>
+            </div>
+
+            <div class="option fac-option">
+              <input type="radio" class="eye" id="fac6" />
+              <label for="fac6">Eye Clinic</label>
+            </div>
+          </div>
+
+          <div class="selected fac-selected">Select Facility Category</div>
+        </div>
+        <div class="select-box">
+          <div class="search-bar">
+            <input type="text" placeholder="Start typing.." />
+          </div>
+
+          <div class="options-container">
+            <div class="option hos-option Vavuniya">
+              <input type="radio" id="hos1" />
+              <label for="hos1">District General Hospital Vavuniya</label>
+            </div>
+
+            <div class="option hos-option Vavuniya">
+              <input type="radio" id="hos2" />
+              <label for="hos2">Abisha Hospital Vavuniya</label>
+            </div>
+
+            <div class="option hos-option Mannar">
+              <input type="radio" id="hos3" />
+              <label for="hos3">District General Hospital Mannar</label>
+            </div>
+
+            <div class="option hos-option Jaffna">
+              <input type="radio" id="hos4" />
+              <label for="hos4">Northern Central Hospital</label>
+            </div>
+
+            <div class="option hos-option Jaffna">
+              <input type="radio" id="hos5" />
+              <label for="hos5">Jaffna Teaching Hospital</label>
+            </div>
+
+            <div class="option hos-option Jaffna">
+              <input type="radio" id="hos6" />
+              <label for="hos6">STS Hospital Jaffna</label>
+            </div>
+          </div>
+
+          <div class="selected hos-selected">Select Hospital Category</div>
+        </div>
+      </div>
+      <button class="submit-button">Search</button>
+    </div>
+
+    <!-- <div class="model-box">
+      <div class="model-option">District General Hospital Vavuniya</div>
+      <div class="model-option">Abisha Hospital Vavuniya</div>
+      <div class="model-option">District General Hospital Mannar</div>
+      <div class="model-option">Northern Central Hospital</div>
+      <div class="model-option">Jaffna Teaching Hospital</div>
+      <div class="model-option">STS Hospital Jaffna</div>
+    </div> -->
+
+    <script src="script.js"></script>
+  </body>
 </html>
