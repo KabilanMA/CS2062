@@ -26,15 +26,15 @@ for (let i = 0; i < 3; i++) {
 }
 
 const disOptions = document.querySelectorAll(".dis-option");
+var district;
 for (let i = 0; i < disOptions.length; i++) {
   disOptions[i].addEventListener("click", () => {
     // document.querySelector(".dis-selected").style.backgroundColor = "#00454a";
     document.querySelector(".dis-selected").style.border = "1px solid white";
-    document.querySelector(".dis-selected").textContent =
-      disOptions[i].textContent;
+    document.querySelector(".dis-selected").textContent = disOptions[i].textContent;
+    district = disOptions[i].textContent.trim();
     optionsContainers[0].classList.toggle("active");
     searchbars[0].classList.toggle("active");
-
     const hosHideOptions = document.querySelectorAll(
       `.hos-option:not(.${disOptions[i].textContent.trim()})`
     );
@@ -45,33 +45,49 @@ for (let i = 0; i < disOptions.length; i++) {
 }
 
 const facOptions = document.querySelectorAll(".fac-option");
+var facility;
 for (let i = 0; i < facOptions.length; i++) {
   facOptions[i].addEventListener("click", () => {
     // document.querySelector(".fac-selected").style.backgroundColor = "#00454a";
     document.querySelector(".fac-selected").style.border = "1px solid white";
 
-    document.querySelector(".fac-selected").textContent =
-      facOptions[i].textContent;
+    document.querySelector(".fac-selected").textContent = facOptions[i].textContent;
+    facility = facOptions[i].textContent.trim();
     optionsContainers[1].classList.toggle("active");
     searchbars[1].classList.toggle("active");
   });
 }
 
 const hosOptions = document.querySelectorAll(".hos-option");
+var hospital;
 for (let i = 0; i < hosOptions.length; i++) {
   hosOptions[i].addEventListener("click", () => {
     optionsContainers[2].classList.toggle("active");
     searchbars[2].classList.toggle("active");
     // document.querySelector(".hos-selected").style.backgroundColor = "#00454a";
     document.querySelector(".hos-selected").style.border = "1px solid white";
-    document.querySelector(".hos-selected").textContent =
-      hosOptions[i].textContent;
-
+    document.querySelector(".hos-selected").textContent = hosOptions[i].textContent;
+    hospital = hosOptions[i].textContent.trim();
     document.querySelector(".dis-selected").style.border = "1px solid white";
     document.querySelector(".dis-selected").textContent =
       hosOptions[i].classList[2];
   });
 }
+
+// send http request
+const button = document.getElementsByClassName('submit-button')[0];
+const xhttp = new XMLHttpRequest();
+//function to run if request is success
+xhttp.onload = function() {
+    window.location.href = "PHP/result.php?hos="+hospital+"&dis="+district+"&fac="+facility;
+}
+//send request on button click
+button.addEventListener("click",() => {
+    if(hospital !== undefined && facility !== undefined && district !== undefined){
+        xhttp.open("GET", "PHP/result.php");
+        xhttp.send();
+    }
+});
 
 // adding search functionality
 searchbars[2].addEventListener("keyup", function (e) {
