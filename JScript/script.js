@@ -86,6 +86,8 @@ button.addEventListener("click",() => {
     if(hospital !== undefined && facility !== undefined && district !== undefined){
         xhttp.open("GET", "PHP/result.php");
         xhttp.send();
+    } else {
+      prompt("Please fill all the columns");
     }
 });
 
