@@ -33,6 +33,8 @@ class Hospital
             $div1 = $div1.$facilityBox->getDiv();
         }
 
+        
+
         $div1 = "<div class=\"container\">\n".$div1."";
         $div2 = "<div class=\"box-area\">\n
         <header>\n
@@ -43,7 +45,18 @@ class Hospital
             </div>\n
         </header>\n
         </div>";
-        $document = "<div class=\"whole\"></div>" . $div2 . $div1;
+        $div3 = "
+        <div class=\"window hidden\">
+        <div class=\"email-form\">
+            <div class=\"email-input\">
+                <div class=\"email-title\">Enter email address</div>
+                <input type=\"email\" name=\"email\" placeholder=\" julia@gmail.com\" class=\"email\">
+                <input type=\"submit\" name=\"submit\" value=\"OK\" class=\"ok\">
+            </div>
+        </div>
+        <div class=\"overlay\"></div>
+        </div>";
+        $document = "<div class=\"whole\"></div>" . $div2 .$div3. $div1 ."</div>";
 
         echo $document;
     }

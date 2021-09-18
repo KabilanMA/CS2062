@@ -22,18 +22,18 @@ class Database
         }
     }
 
-    // public function setUser($newUsername, $password)
-    // {
-    //     $this->user = $newUsername;
-    //     $this->password = $password;
-    //     $this->db->change_user($this->user, $this->password, $this->database);
-    //     if(mysqli_connect_errno()) {
-    //         echo "<h1>ERROR</h2>";
-    //         exit;
-    //     }
-    // }
+    public function setUser($newUsername, $password)
+    {
+        $this->user = $newUsername;
+        $this->password = $password;
+        $this->db->change_user($this->user, $this->password, $this->database);
+        if(mysqli_connect_errno()) {
+            echo "<h1>ERROR</h2>";
+            exit;
+        }
+    }
 
-    public function getFacilityList(string $hos)
+    public function getHospital(string $hos)
     {
         $hospital = new Hospital($hos);
         $query = "SELECT Name, FacilityName, sTime, eTime FROM Facilities, FacilityManager, Hospitals WHERE Hospitals.Name=? AND Hospitals.HospitalID=FacilityManager.HospitalID AND Facilities.FacilityID=FacilityManager.FacilityID AND sTime IS NOT NULL AND eTime IS NOT NULL";
@@ -49,6 +49,18 @@ class Database
         }
 
         return $hospital;
+    }
+
+    public function saveUsermail(string $email, string $facName, string $hosName){
+        $query = "INSERT INTO Users (Email, FacilityName, HospitalName) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sss', $emaili, $facNamei, $hosNamei);
+        $emaili = $email;
+        $facNamei = $facName;
+        $hosNamei = $hosName;
+        $stmt->execute();
+        $stmt->close();
+        $this->db->close();
     }
 }
 

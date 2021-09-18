@@ -75,11 +75,11 @@ for (let i = 0; i < hosOptions.length; i++) {
 }
 
 // send http request
-const button = document.getElementsByClassName('submit-button')[0];
+const button = document.querySelector('.submit-button');
 const xhttp = new XMLHttpRequest();
 //function to run if request is success
 xhttp.onload = function() {
-    window.location.href = "PHP/result.php?hos="+hospital+"&dis="+district+"&fac="+facility;
+    window.location.href = "PHP/result.php?hos="+hospital+"&dis="+district+"&fac="+facility;;
 }
 //send request on button click
 button.addEventListener("click",() => {

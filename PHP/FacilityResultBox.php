@@ -14,7 +14,14 @@ class FacilityResultBox
 
     private function buildHTML():string
     {
-        $div = "<div class=\"facility ".$this->facility->getClassName()."\">\n<h3>".$this->facility->getName()."</h3>\n<div class=\"time facility-content\">\n<div class=\"facility-content-heading\">TIME</div>\n<div class=\"fac-time facility-content-detail\">".$this->facility->getTime()."</div>\n</div>\n<div class=\"notify-me\">notify me</div></div>\n";
+        $div = "<div class=\"facility ".$this->facility->getClassName()."\">\n
+            <h3>".$this->facility->getName()."</h3>\n
+            <div class=\"time facility-content\">\n
+                <div class=\"facility-content-heading\">TIME</div>\n
+                <div class=\"fac-time facility-content-detail\">".$this->facility->getTime()."</div>\n
+            </div>\n
+            <div class=\"notify-me\" id=\"no-".$this->facility->getClassName()."\">notify me</div>
+        </div>\n";
 
         return $div;
     }
