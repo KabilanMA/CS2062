@@ -1,33 +1,37 @@
 <?php
-require_once('Facility.php');
-require_once('FacilityResultBox.php');
+require_once 'Facility.php';
+require_once 'FacilityResultBox.php';
 
 class Hospital
 {
     private $name;
+    private $facilityTimeList;
     private $facilityList;
     public function __construct(string $name)
     {
+        $this->facilityTimeList = array();
         $this->facilityList = array();
         $this->name = $name;
     }
 
-    public function putFacility(string $facilityName, $sTime, $eTime)
+    public function setFacility(string $facilityName, $sTime, $eTime)
     {
-        $facility = new Facility($facilityName, $sTime, $eTime);
-        $this->facilityList[$facilityName] = $facility;
+        $facility = new Facility($facilityName);
+        $facility->setStartTime($sTime);
+        $facility->setEndTime($eTime);
+        $this->facilityTimeList[$facilityName] = $facility;
     }
 
     public function getName(){
         return $this->name;
     }
 
-    public function display(string $fac)
+    public function display(string $fac):string
     {
-        $facilityBox = new FacilityResultBox($this->facilityList[$fac]);
+        $facilityBox = new FacilityResultBox($this->facilityTimeList[$fac]);
         $div1 = $facilityBox->getDiv();
         
-        foreach ($this->facilityList as $facility) {
+        foreach ($this->facilityTimeList as $facility) {
             if($facility->getName() == $fac) continue;
             $facilityBox = new FacilityResultBox($facility);
             $div1 = $div1.$facilityBox->getDiv();
@@ -58,7 +62,7 @@ class Hospital
         </div>";
         $document = "<div class=\"whole\"></div>" . $div2 .$div3. $div1 ."</div>";
 
-        echo $document;
+        return $document;
     }
 }
 

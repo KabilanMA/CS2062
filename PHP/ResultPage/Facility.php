@@ -8,11 +8,9 @@ class Facility
     private $sTime;
     private $className;
 
-    function __construct($name, $sTime, $eTime)
+    function __construct($name)
     {
         $this->name = $name;
-        $this->sTime = $sTime;
-        $this->eTime = $eTime;
         $this->setClassName($this->name);
     }
 
@@ -22,6 +20,16 @@ class Facility
         $name = trim($name);
         str_replace(' ','-',$name);
         $this->className = $name;
+    }
+
+    public function setStartTime($sTime)
+    {
+        $this->sTime = $sTime;
+    }
+
+    public function setEndTime($eTime)
+    {
+        $this->eTime = $eTime;
     }
 
     public function getStartTime()

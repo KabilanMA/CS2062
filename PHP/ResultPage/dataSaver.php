@@ -1,6 +1,6 @@
 <?php
 require_once './Database.php';
-require_once './PHPMailer/credential.php';
+require_once '../PHPMailer/credential.php';
 
 $db = new Database('localhost', USER, DB_PASS, DB);
 $email = $_POST['email'];

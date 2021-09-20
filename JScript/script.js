@@ -35,12 +35,18 @@ for (let i = 0; i < disOptions.length; i++) {
     district = disOptions[i].textContent.trim();
     optionsContainers[0].classList.toggle("active");
     searchbars[0].classList.toggle("active");
+
+    for (let j = 0; j < hosOptions.length; j++) {
+      hosOptions[j].style.display = "none";
+    }
+
     const hosHideOptions = document.querySelectorAll(
-      `.hos-option:not(.${disOptions[i].textContent.trim()})`
+      `.hos-option.${disOptions[i].textContent.trim()}`
     );
     for (let j = 0; j < hosHideOptions.length; j++) {
-      hosHideOptions[j].style.display = "none";
+      hosHideOptions[j].style.display = "block";
     }
+
   });
 }
 
@@ -78,14 +84,24 @@ for (let i = 0; i < hosOptions.length; i++) {
 const button = document.querySelector('.submit-button');
 const xhttp = new XMLHttpRequest();
 //function to run if request is success
-xhttp.onload = function() {
-    window.location.href = "PHP/result.php?hos="+hospital+"&dis="+district+"&fac="+facility;;
-}
+// xhttp.onload = function() {
+//     window.location.href = "PHP/result.php?hos="+hospital+"&dis="+district+"&fac="+facility;
+// }
 //send request on button click
 button.addEventListener("click",() => {
-    if(hospital !== undefined && facility !== undefined && district !== undefined){
-        xhttp.open("GET", "PHP/result.php");
-        xhttp.send();
+    if(hospital !== undefined && facility !== undefined){
+        $.ajax({
+          type: "POST",
+          url: "../ResultPage/resultData.php",
+          data: {
+            hos:hospital,
+            fac:facility
+          },
+          success: function (response) {
+            console.log(response);
+            window.location.href = "../ResultPage/ResultPage.php?hos="+hospital+"&dis="+district+"&fac="+facility;
+          }
+        });
     } else {
       prompt("Please fill all the columns");
     }

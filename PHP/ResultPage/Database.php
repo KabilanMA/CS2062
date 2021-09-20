@@ -1,5 +1,5 @@
 <?php
-require_once('Hospital.php');
+require_once 'Hospital.php';
 
 class Database
 {
@@ -33,6 +33,21 @@ class Database
         }
     }
 
+    public function getSearchableDetails():array
+    {
+        $list = array();
+        $query = "SELECT Hospitals.Address, Hospitals.Name, Facilities.FacilityName FROM Facilities, Hospitals, FacilityManager WHERE Hospitals.HospitalID = FacilityManager.HospitalID AND Facilities.FacilityID = FacilityManager.FacilityID AND FacilityManager.sTime IS NOT NULL AND FacilityManager.eTime IS NOT NULL ORDER BY Hospitals.Address";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($districtName, $hospitalName, $facilityName);
+        while($stmt->fetch()){
+            $list[] = [$districtName, $hospitalName, $facilityName];
+        }
+
+        return $list;
+    }
+
     public function getHospital(string $hos)
     {
         $hospital = new Hospital($hos);
@@ -45,7 +60,7 @@ class Database
         $stmt->bind_result($name, $facilityName, $sTime, $eTime);
         while($stmt->fetch()){
             if($name != $hos) continue;
-            $hospital->putFacility($facilityName, $sTime, $eTime);
+            $hospital->setFacility($facilityName, $sTime, $eTime);
         }
 
         return $hospital;

@@ -3,7 +3,6 @@ const overlay=document.querySelector(".overlay");
 const okButton = document.querySelector(".ok");
 const hospital = document.querySelector('.hos-name').firstElementChild.textContent.trim();
 const emailNode = document.querySelector('.email');
-console.log(emailNode);
 let facility = null;
 
 for (let i = 0; i < notify.length; i++) {
@@ -11,15 +10,13 @@ for (let i = 0; i < notify.length; i++) {
     element.addEventListener('click', function(){
         document.querySelector(".hidden").style.display="block";
         facility = element.parentElement.firstElementChild.textContent.trim();
-        console.log(facility);
     });
 }
 
 okButton.addEventListener("click", function(){
-    console.log(emailNode.value.trim());
     $.ajax({
         type: "POST",
-        url: "../PHP/dataSaver.php",
+        url: "dataSaver.php",
         data: {email: emailNode.value.trim(), fac: facility, hos: hospital},
         success: function (response) {
             document.querySelector(".hidden").style.display="none";
