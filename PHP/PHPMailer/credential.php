@@ -3,6 +3,7 @@
     define('PASS', 'cs2062php');
     define('USER', 'root');
     define('DB_PASS', 'Kv@25031999');
-    define('DB', 'hospitalManagement')
+    define('DB', 'hospitalManagement');
+    define('HOST', 'localhost');
 
 ?>

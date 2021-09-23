@@ -1,4 +1,4 @@
 <?php
-header("Location: ./PHP/SearchPage/Home.php");
+header("Location: ./PHP/Search/Home.php");
 exit();
 ?>

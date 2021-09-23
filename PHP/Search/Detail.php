@@ -1,6 +1,6 @@
 <?php
 
-require_once '../ResultPage/Database.php';
+require_once '../Result/Database.php';
 require_once '../PHPMailer/credential.php';
 
 class Detail 
@@ -13,7 +13,7 @@ class Detail
   
   public function __construct()
   {
-    $this->db = new Database('localhost', USER, DB_PASS, DB);
+    $this->db = new Database(HOST, USER, DB_PASS, DB);
     $this->districtList = array();
     $this->hospitalList = array();
     $this->facilityList = array();

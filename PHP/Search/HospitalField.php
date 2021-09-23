@@ -7,13 +7,10 @@ require_once 'SearchField.php';
 class HospitalField extends SearchField
 {
     private array $hospitals;
-    private string $html;
-    private Detail $detail;
     
     public function __construct(Detail $detail)
     {
-        $this->html = "";
-        $this->detail = $detail;
+        parent::__construct($detail);
         $this->hospitals = array();
         $this->putData($this->detail);
         $this->buildField();

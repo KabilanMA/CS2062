@@ -22,7 +22,7 @@
         private Database $db;
         public function __construct()
         {
-            $this->db = new Database('localhost',USER, DB_PASS, DB);
+            $this->db = new Database(HOST, USER, DB_PASS, DB);
             $this->hospital = $this->getHospital(HOSPITAL);
             
         }

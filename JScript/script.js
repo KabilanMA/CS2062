@@ -92,14 +92,14 @@ button.addEventListener("click",() => {
     if(hospital !== undefined && facility !== undefined){
         $.ajax({
           type: "POST",
-          url: "../ResultPage/resultData.php",
+          url: "../Result/resultData.php",
           data: {
             hos:hospital,
             fac:facility
           },
           success: function (response) {
             console.log(response);
-            window.location.href = "../ResultPage/ResultPage.php?hos="+hospital+"&dis="+district+"&fac="+facility;
+            window.location.href = "../Result/ResultPage.php?hos="+hospital+"&dis="+district+"&fac="+facility;
           }
         });
     } else {
