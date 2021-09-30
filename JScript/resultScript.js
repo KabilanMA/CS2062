@@ -21,6 +21,7 @@ okButton.addEventListener("click", function(){
         success: function (response) {
             document.querySelector(".hidden").style.display="none";
             alert("Successfully added");
+            console.log(response);
         },
         error: function(xhr, ajaxOptions, thrownError){
             alert("Refresh and try again");

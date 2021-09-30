@@ -14,6 +14,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6BnAZGe2Z2UX0cDAQUyGXR-_FVquDcu4&callback=initMap&v=weekly"
       async
     ></script>
+    <script src="../JScript/jquery-3.6.0.min.js"></script>
     <script src="map.js"></script>
   </body>
 </html>
